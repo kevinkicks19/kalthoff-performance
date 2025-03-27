@@ -1,14 +1,104 @@
-<!doctype html>
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+const services = [
+	{ name: 'Performance Programming', href: '/services/performance-programming' },
+	{ name: 'Rehab Programming', href: '/services/rehab-programming' },
+	{ name: 'Daily Programming', href: '/services/daily-programming' },
+	{ name: 'Nutrition & Supplements', href: '/services/nutrition-supplements' },
+	{ name: 'Home Gym Design', href: '/services/home-gym-design' },
+	{ name: 'Sport Science', href: '/services/sport-science' },
+	{ name: 'Collaboration', href: '/services/collaboration' }
+];
+---
+
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="description" content="Kalthoff Performance - Your Premier Fitness Destination" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	</head>
-	<body>
-		<slot />
+	<body class="min-h-screen bg-white">
+		<header class="fixed w-full bg-white shadow-md z-50">
+			<nav class="container mx-auto px-4 py-4">
+				<div class="flex justify-between items-center">
+					<a href="/" class="text-2xl font-bold text-primary">Kalthoff Performance</a>
+					<div class="hidden md:flex space-x-8 items-center">
+						<a href="/" class="text-gray-600 hover:text-primary">Home</a>
+						<div class="relative group">
+							<button class="text-gray-600 hover:text-primary flex items-center">
+								Services
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+								</svg>
+							</button>
+							<div class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-x-1/4">
+								<div class="py-2">
+									{services.map(service => (
+										<a href={service.href} class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+											{service.name}
+										</a>
+									))}
+								</div>
+							</div>
+						</div>
+						<a href="/about" class="text-gray-600 hover:text-primary">About</a>
+						<a href="/contact" class="text-gray-600 hover:text-primary">Contact</a>
+					</div>
+					<button class="md:hidden">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+						</svg>
+					</button>
+				</div>
+			</nav>
+		</header>
+
+		<main class="pt-16">
+			<slot />
+		</main>
+
+		<footer class="bg-black text-white py-12">
+			<div class="container mx-auto px-4">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div>
+						<h3 class="text-xl font-bold mb-4">Kalthoff Performance</h3>
+						<p class="text-gray-300">Your journey to peak performance starts here.</p>
+					</div>
+					<div>
+						<h3 class="text-xl font-bold mb-4">Our Services</h3>
+						<ul class="space-y-2">
+							{services.map(service => (
+								<li><a href={service.href} class="text-gray-300 hover:text-white">{service.name}</a></li>
+							))}
+						</ul>
+					</div>
+					<div>
+						<h3 class="text-xl font-bold mb-4">Contact Us</h3>
+						<ul class="space-y-2 text-gray-300">
+							<li>123 Fitness Street</li>
+							<li>City, State 12345</li>
+							<li>Phone: (555) 123-4567</li>
+							<li>Email: info@kalthoffperformance.com</li>
+						</ul>
+					</div>
+				</div>
+				<div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-300">
+					<p>&copy; {new Date().getFullYear()} Kalthoff Performance. All rights reserved.</p>
+				</div>
+			</div>
+		</footer>
 	</body>
 </html>
 

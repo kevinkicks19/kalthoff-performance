@@ -1,11 +1,89 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Kalthoff Performance - Your Premier Fitness Destination">
+	<!-- Hero Section with Circular Navigation -->
+	<section class="relative min-h-screen bg-black overflow-hidden flex items-center justify-center">
+		<!-- Background Pattern -->
+		<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBkPSJNMzYuMzY0IDM2LjM2NGwtMzYuMzY0IDM2LjM2NHYtMzYuMzY0aDM2LjM2NHptLTM2LjM2NCAwTDM2LjM2NCAwaDM2LjM2NHYzNi4zNjRIMHoiLz48L2c+PC9zdmc+')] opacity-5"></div>
+		
+		<!-- Circular Navigation -->
+		<div class="relative w-[800px] h-[800px] flex items-center justify-center">
+			<!-- Center Image -->
+			<div class="absolute w-[500px] h-[500px] rounded-full overflow-hidden border-4 border-white shadow-lg animate-fade-in z-10">
+				<img
+					src="/images/kalthoffMedal.jpg"
+					alt="Olympic Gold Medalist - Kalthoff Performance"
+					class="w-full h-full object-cover"
+				/>
+				<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end justify-center pb-8">
+					<h2 class="text-2xl font-black text-white tracking-wider">Kalthoff Performance</h2>
+				</div>
+			</div>
+
+			<!-- Navigation Buttons -->
+			<div class="absolute w-full h-full animate-spin-in">
+				<a href="/services" class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
+					<span class="text-xl font-bold tracking-wide">SERVICES</span>
+				</a>
+				<a href="/about" class="absolute bottom-[14%] right-[14%] transform translate-x-1/2 translate-y-1/2 w-40 h-40 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
+					<span class="text-xl font-bold tracking-wide">ABOUT</span>
+				</a>
+				<a href="/contact" class="absolute bottom-[14%] left-[14%] transform -translate-x-1/2 translate-y-1/2 w-40 h-40 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
+					<span class="text-xl font-bold tracking-wide">CONTACT</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Features Section -->
+	<section class="py-20 bg-white">
+		<div class="container mx-auto px-4">
+			<h2 class="text-5xl font-black text-center mb-16 tracking-tight">WHY CHOOSE US</h2>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<div class="bg-black text-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+					<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+						</svg>
+					</div>
+					<h3 class="text-2xl font-bold mb-4 tracking-wide">EXPERT TRAINERS</h3>
+					<p class="text-gray-300">Our certified trainers bring years of experience and expertise to help you reach your goals.</p>
+				</div>
+				<div class="bg-black text-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+					<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+						</svg>
+					</div>
+					<h3 class="text-2xl font-bold mb-4 tracking-wide">CUSTOMIZED PROGRAMS</h3>
+					<p class="text-gray-300">Personalized training plans tailored to your specific goals and fitness level.</p>
+				</div>
+				<div class="bg-black text-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+					<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+						</svg>
+					</div>
+					<h3 class="text-2xl font-bold mb-4 tracking-wide">COMMUNITY SUPPORT</h3>
+					<p class="text-gray-300">Join a supportive community of like-minded individuals on their fitness journey.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="py-20 bg-black text-white">
+		<div class="container mx-auto px-4 text-center">
+			<h2 class="text-5xl font-black mb-8 tracking-tight">READY TO START YOUR FITNESS JOURNEY?</h2>
+			<p class="text-2xl mb-8 text-gray-300 font-light">Join us today and transform your life through fitness</p>
+			<a href="/contact" class="bg-white text-black px-8 py-3 rounded-full text-lg font-bold tracking-wide hover:bg-gray-200 transition duration-300">
+				GET STARTED NOW
+			</a>
+		</div>
+	</section>
 </Layout>

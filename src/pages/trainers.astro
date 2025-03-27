@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const trainers = [
+  {
+    name: "John Kalthoff",
+    role: "Founder & Head Trainer",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    specialties: ["Strength Training", "Personal Training", "Sports Performance"],
+    bio: "With over 20 years of experience, John has helped countless clients achieve their fitness goals. His expertise in strength training and sports performance has made him a sought-after trainer in the industry."
+  },
+  {
+    name: "Sarah Johnson",
+    role: "Nutrition Specialist",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    specialties: ["Nutrition Coaching", "Weight Management", "Sports Nutrition"],
+    bio: "Sarah brings her expertise in nutrition and wellness to help clients optimize their performance through proper nutrition. She specializes in creating personalized meal plans and nutrition strategies."
+  },
+  {
+    name: "Mike Chen",
+    role: "Group Training Lead",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    specialties: ["HIIT", "Group Fitness", "Cardio Training"],
+    bio: "Mike's energetic approach to group training has made him a favorite among our clients. He specializes in high-intensity interval training and creating engaging group workout experiences."
+  },
+  {
+    name: "Emily Rodriguez",
+    role: "Yoga & Flexibility Specialist",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    specialties: ["Yoga", "Flexibility", "Mind-Body Connection"],
+    bio: "Emily combines traditional yoga practices with modern fitness techniques to help clients improve flexibility and overall well-being. Her classes focus on both physical and mental wellness."
+  },
+  {
+    name: "David Thompson",
+    role: "Strength & Conditioning Coach",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    specialties: ["Strength Training", "Conditioning", "Athletic Performance"],
+    bio: "David's background in athletic performance and strength training has helped numerous athletes and fitness enthusiasts reach their peak potential."
+  },
+  {
+    name: "Lisa Chen",
+    role: "Recovery Specialist",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    specialties: ["Recovery", "Mobility", "Injury Prevention"],
+    bio: "Lisa specializes in helping clients prevent injuries and improve recovery through proper mobility work and recovery techniques."
+  }
+];
+---
+
+<Layout title="Our Trainers - Kalthoff Performance">
+  <!-- Hero Section -->
+  <section class="bg-secondary text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Meet Our Team</h1>
+      <p class="text-xl max-w-2xl mx-auto">Expert trainers dedicated to helping you achieve your fitness goals</p>
+    </div>
+  </section>
+
+  <!-- Trainers Grid -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {trainers.map((trainer) => (
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="aspect-w-4 aspect-h-3">
+              <img
+                src={trainer.image}
+                alt={trainer.name}
+                class="object-cover w-full h-full"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold mb-2">{trainer.name}</h3>
+              <p class="text-primary font-semibold mb-4">{trainer.role}</p>
+              <p class="text-gray-600 mb-4">{trainer.bio}</p>
+              <div class="mb-4">
+                <h4 class="font-semibold mb-2">Specialties:</h4>
+                <div class="flex flex-wrap gap-2">
+                  {trainer.specialties.map((specialty) => (
+                    <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
+                      {specialty}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <a href="/contact" class="block w-full bg-primary text-white text-center py-2 rounded-lg hover:bg-opacity-90 transition duration-300">
+                Book a Session
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold mb-8">Ready to Start Training?</h2>
+      <p class="text-xl mb-8">Book a session with one of our expert trainers today</p>
+      <a href="/contact" class="bg-white text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition duration-300">
+        Contact Us Now
+      </a>
+    </div>
+  </section>
+</Layout> 
