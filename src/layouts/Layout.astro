@@ -14,6 +14,7 @@ const services = [
 	{ name: 'Nutrition & Supplements', href: '/services/nutrition-supplements' },
 	{ name: 'Home Gym Design', href: '/services/home-gym-design' },
 	{ name: 'Sport Science', href: '/services/sport-science' },
+	{ name: 'Mentorship', href: '/services/mentorship' },
 	{ name: 'Collaboration', href: '/services/collaboration' }
 ];
 ---
@@ -27,36 +28,36 @@ const services = [
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 	</head>
-	<body class="min-h-screen bg-white">
-		<header class="fixed w-full bg-white shadow-md z-50">
+	<body class="min-h-screen bg-white font-inter">
+		<header class="fixed w-full bg-black/70 backdrop-blur-sm shadow-md z-50">
 			<nav class="container mx-auto px-4 py-4">
 				<div class="flex justify-between items-center">
-					<a href="/" class="text-2xl font-bold text-primary">Kalthoff Performance</a>
+					<a href="/" class="text-3xl font-bebas text-white tracking-wider">Kalthoff Performance</a>
 					<div class="hidden md:flex space-x-8 items-center">
-						<a href="/" class="text-gray-600 hover:text-primary">Home</a>
+						<a href="/" class="text-gray-200 hover:text-white font-medium tracking-wide">Home</a>
 						<div class="relative group">
-							<button class="text-gray-600 hover:text-primary flex items-center">
+							<button class="text-gray-200 hover:text-white font-medium tracking-wide flex items-center">
 								Services
 								<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
 								</svg>
 							</button>
-							<div class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-x-1/4">
+							<div class="absolute left-0 mt-2 w-64 bg-black/70 backdrop-blur-sm rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-x-1/4">
 								<div class="py-2">
 									{services.map(service => (
-										<a href={service.href} class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+										<a href={service.href} class="block px-4 py-2 text-gray-200 hover:bg-black/90 hover:text-white">
 											{service.name}
 										</a>
 									))}
 								</div>
 							</div>
 						</div>
-						<a href="/about" class="text-gray-600 hover:text-primary">About</a>
-						<a href="/contact" class="text-gray-600 hover:text-primary">Contact</a>
+						<a href="/about" class="text-gray-200 hover:text-white">About</a>
+						<a href="/contact" class="text-gray-200 hover:text-white">Contact</a>
 					</div>
-					<button class="md:hidden">
+					<button class="md:hidden text-white">
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
 						</svg>
@@ -73,24 +74,28 @@ const services = [
 			<div class="container mx-auto px-4">
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 					<div>
-						<h3 class="text-xl font-bold mb-4">Kalthoff Performance</h3>
-						<p class="text-gray-300">Your journey to peak performance starts here.</p>
+						<h3 class="text-xl font-bebas tracking-wider mb-4">Kalthoff Performance</h3>
+						<p class="text-gray-300 font-inter">Your journey to peak performance starts here.</p>
 					</div>
 					<div>
-						<h3 class="text-xl font-bold mb-4">Our Services</h3>
-						<ul class="space-y-2">
+						<h3 class="text-xl font-bebas tracking-wider mb-4">Our Services</h3>
+						<ul class="space-y-2 font-inter">
 							{services.map(service => (
-								<li><a href={service.href} class="text-gray-300 hover:text-white">{service.name}</a></li>
+								<li><a href={service.href} class="text-gray-300 hover:text-white transition duration-300">{service.name}</a></li>
 							))}
 						</ul>
 					</div>
 					<div>
-						<h3 class="text-xl font-bold mb-4">Contact Us</h3>
-						<ul class="space-y-2 text-gray-300">
-							<li>123 Fitness Street</li>
-							<li>City, State 12345</li>
-							<li>Phone: (555) 123-4567</li>
-							<li>Email: info@kalthoffperformance.com</li>
+						<h3 class="text-xl font-bebas tracking-wider mb-4">Contact Us</h3>
+						<ul class="space-y-2 text-gray-300 font-inter">
+							<li>Phone: (403) 561-0312</li>
+							<li>Email: kalthoffperformance@gmail.com</li>
+							<li class="mt-4">
+								<span class="font-semibold">Business Hours:</span><br />
+								Mon-Fri: 6:00 AM - 9:00 PM<br />
+								Sat: 7:00 AM - 6:00 PM<br />
+								Sun: 8:00 AM - 4:00 PM
+							</li>
 						</ul>
 					</div>
 				</div>

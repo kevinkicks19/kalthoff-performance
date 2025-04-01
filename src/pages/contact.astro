@@ -4,10 +4,13 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Contact Us - Kalthoff Performance">
   <!-- Hero Section -->
-  <section class="bg-secondary text-white py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
-      <p class="text-xl max-w-2xl mx-auto">Ready to start your fitness journey? Contact us today!</p>
+  <section class="bg-black text-white py-32">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-6xl font-bebas tracking-wider mb-6">Get in Touch</h1>
+        <div class="w-24 h-1 bg-primary mx-auto mb-8"></div>
+        <p class="text-xl font-inter max-w-2xl mx-auto text-gray-300">Ready to start your fitness journey? Contact us today and take the first step towards achieving your performance goals.</p>
+      </div>
     </div>
   </section>
 
@@ -17,57 +20,49 @@ import Layout from '../layouts/Layout.astro';
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <!-- Contact Form -->
         <div class="bg-white p-8 rounded-lg shadow-lg">
-          <h2 class="text-3xl font-bold mb-8">Send us a Message</h2>
-          <form class="space-y-6">
+          <h2 class="text-4xl font-bebas tracking-wider mb-8">Send us a Message</h2>
+          <form id="contactForm" class="space-y-6">
             <div>
-              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
-              <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" required>
+              <label for="name" class="block text-sm font-inter font-medium text-gray-700 mb-2">Name</label>
+              <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent font-inter" required>
             </div>
             <div>
-              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-              <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" required>
+              <label for="email" class="block text-sm font-inter font-medium text-gray-700 mb-2">Email</label>
+              <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent font-inter" required>
             </div>
             <div>
-              <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-              <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+              <label for="phone" class="block text-sm font-inter font-medium text-gray-700 mb-2">Phone</label>
+              <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent font-inter">
             </div>
             <div>
-              <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
-              <select id="service" name="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+              <label for="service" class="block text-sm font-inter font-medium text-gray-700 mb-2">Service Interest</label>
+              <select id="service" name="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent font-inter">
                 <option value="">Select a service</option>
-                <option value="personal">Personal Training</option>
-                <option value="group">Group Training</option>
-                <option value="online">Online Coaching</option>
-                <option value="nutrition">Nutrition Coaching</option>
-                <option value="recovery">Recovery & Wellness</option>
+                <option value="daily">Daily Programming</option>
+                <option value="performance">Performance Programming</option>
+                <option value="rehab">Rehabilitation Programming</option>
+                <option value="team">Team Training</option>
+                <option value="sport">Sport Science</option>
+                <option value="nutrition">Nutrition & Supplements</option>
+                <option value="gym">Home Gym Design</option>
+                <option value="mentorship">Mentorship</option>
               </select>
             </div>
             <div>
-              <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-              <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+              <label for="message" class="block text-sm font-inter font-medium text-gray-700 mb-2">Message</label>
+              <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent font-inter" required></textarea>
             </div>
-            <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition duration-300">
+            <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition duration-300 font-bebas text-xl tracking-wider">
               Send Message
             </button>
+            <div id="formMessage" class="hidden mt-4 p-4 rounded-lg"></div>
           </form>
         </div>
 
         <!-- Contact Information -->
         <div>
-          <h2 class="text-3xl font-bold mb-8">Contact Information</h2>
+          <h2 class="text-4xl font-bebas tracking-wider mb-8">Contact Information</h2>
           <div class="space-y-6">
-            <div class="flex items-start">
-              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <div class="ml-4">
-                <h3 class="text-lg font-semibold mb-1">Address</h3>
-                <p class="text-gray-600">123 Fitness Street<br />City, State 12345</p>
-              </div>
-            </div>
             <div class="flex items-start">
               <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -75,8 +70,8 @@ import Layout from '../layouts/Layout.astro';
                 </svg>
               </div>
               <div class="ml-4">
-                <h3 class="text-lg font-semibold mb-1">Phone</h3>
-                <p class="text-gray-600">(555) 123-4567</p>
+                <h3 class="text-xl font-bebas tracking-wider mb-1">Phone</h3>
+                <p class="text-gray-600 font-inter">(403) 561-0312</p>
               </div>
             </div>
             <div class="flex items-start">
@@ -86,8 +81,8 @@ import Layout from '../layouts/Layout.astro';
                 </svg>
               </div>
               <div class="ml-4">
-                <h3 class="text-lg font-semibold mb-1">Email</h3>
-                <p class="text-gray-600">info@kalthoffperformance.com</p>
+                <h3 class="text-xl font-bebas tracking-wider mb-1">Email</h3>
+                <p class="text-gray-600 font-inter">kalthoffperformance@gmail.com</p>
               </div>
             </div>
             <div class="flex items-start">
@@ -97,8 +92,8 @@ import Layout from '../layouts/Layout.astro';
                 </svg>
               </div>
               <div class="ml-4">
-                <h3 class="text-lg font-semibold mb-1">Business Hours</h3>
-                <p class="text-gray-600">Monday - Friday: 6:00 AM - 9:00 PM<br />Saturday: 7:00 AM - 6:00 PM<br />Sunday: 8:00 AM - 4:00 PM</p>
+                <h3 class="text-xl font-bebas tracking-wider mb-1">Business Hours</h3>
+                <p class="text-gray-600 font-inter">Monday - Friday: 6:00 AM - 9:00 PM<br />Saturday: 7:00 AM - 6:00 PM<br />Sunday: 8:00 AM - 4:00 PM</p>
               </div>
             </div>
           </div>
@@ -106,21 +101,47 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+</Layout>
 
-  <!-- Map Section -->
-  <section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Find Us</h2>
-      <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30591910525!2d-74.25986532963654!3d40.69714941678941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1647891234567!5m2!1sen!2sus"
-          width="100%"
-          height="450"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy">
-        </iframe>
-      </div>
-    </div>
-  </section>
-</Layout> 
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const formMessage = document.getElementById('formMessage') as HTMLDivElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      service: formData.get('service'),
+      message: formData.get('message')
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        formMessage.textContent = 'Message sent successfully! We\'ll get back to you soon.';
+        formMessage.className = 'mt-4 p-4 rounded-lg bg-green-100 text-green-700 font-inter';
+        form.reset();
+      } else {
+        throw new Error(result.message || 'Failed to send message');
+      }
+    } catch (error) {
+      formMessage.textContent = 'Sorry, there was an error sending your message. Please try again later.';
+      formMessage.className = 'mt-4 p-4 rounded-lg bg-red-100 text-red-700 font-inter';
+    }
+
+    formMessage.classList.remove('hidden');
+  });
+</script> 

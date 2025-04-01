@@ -2,122 +2,254 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="About Us - Kalthoff Performance">
-  <!-- Hero Section -->
-  <section class="bg-secondary text-white py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Story</h1>
-      <p class="text-xl max-w-2xl mx-auto">Dedicated to helping you achieve your fitness goals since 2010</p>
-    </div>
-  </section>
+<Layout title="About - Kalthoff Performance">
+	<!-- Hero Section with Photo Slideshow -->
+	<section class="relative h-[60vh] bg-black overflow-hidden">
+		<div class="absolute inset-0">
+			<div class="flex transition-transform duration-500" id="heroSlider">
+				<!-- Slide 1 -->
+				<div class="w-full h-[60vh] flex-shrink-0">
+					<img src="/images/kalthoffMedal.jpg" alt="Olympic Celebration" class="w-full h-full object-cover" />
+				</div>
+				<!-- Add more slides here when you have the photos -->
+			</div>
+			<!-- Gradient Overlay -->
+			<div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black"></div>
+		</div>
+		
+		<!-- Title -->
+		<div class="absolute inset-0 flex items-center justify-center text-white">
+			<h1 class="text-7xl font-bebas tracking-wider text-center">Experience & Affiliations</h1>
+		</div>
+	</section>
 
-  <!-- Story Section -->
-  <section class="py-20">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="text-3xl font-bold mb-6">Our Journey</h2>
-          <p class="text-gray-600 mb-4">
-            Founded in 2010, Kalthoff Performance has been at the forefront of fitness innovation and personal transformation. What started as a small personal training studio has grown into a comprehensive fitness center offering a wide range of services to help people achieve their fitness goals.
-          </p>
-          <p class="text-gray-600 mb-4">
-            Our founder, John Kalthoff, envisioned a place where people could not only work out but also learn about proper nutrition, recovery, and overall wellness. Today, we continue to uphold his vision while incorporating the latest fitness trends and scientific research.
-          </p>
-          <p class="text-gray-600">
-            We believe that everyone deserves access to quality fitness training and guidance, regardless of their current fitness level or experience. Our team of certified trainers and nutrition experts is dedicated to helping you succeed in your fitness journey.
-          </p>
-        </div>
-        <div class="relative">
-          <div class="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-              alt="Gym interior"
-              class="object-cover w-full h-full"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+	<!-- Main Text Section -->
+	<section class="py-20 bg-white">
+		<div class="container mx-auto px-4">
+			<div class="max-w-6xl mx-auto">
+				<h2 class="text-5xl font-bebas tracking-wider mb-8 text-center">About Me</h2>
+				<div class="flex flex-col md:flex-row items-center gap-12">
+					<div class="md:w-1/2">
+						<p class="text-xl font-inter text-gray-700 leading-relaxed">
+							With over 15 years of experience in high-performance sport, I have dedicated my career to optimizing human movement, injury prevention, and overall quality of life through strength and conditioning, sport science, and rehabilitation. My journey has taken me from competing at the professional level in soccer to coaching Olympic and professional athletes in multiple sports, as well as university teams. More recently, I have expanded my focus to working with the general population—helping individuals improve their movement, prevent injuries, and enhance their overall well-being. As a Certified Strength & Conditioning Specialist (CSCS) with a Master of Science in Sport Science and Strength & Conditioning, I specialize in evidence-based training methodologies that support both athletic performance and long-term health.
+						</p>
+						<div class="mt-8 text-center">
+							<a href="/docs/Zach Kalthoff CV.pdf" target="_blank" class="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300">
+								<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+								</svg>
+								View Full CV
+							</a>
+						</div>
+					</div>
+					<div class="md:w-1/2">
+						<img 
+							src="/images/kalthoffAbout.jpg" 
+							alt="Zach Kalthoff" 
+							class="w-full h-[500px] object-cover rounded-lg shadow-lg"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-  <!-- Values Section -->
-  <section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-16">Our Values</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-4">Excellence</h3>
-          <p class="text-gray-600">We strive for excellence in everything we do, from training programs to customer service.</p>
-        </div>
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-4">Community</h3>
-          <p class="text-gray-600">We foster a supportive community where everyone feels welcome and motivated to succeed.</p>
-        </div>
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-4">Results</h3>
-          <p class="text-gray-600">We focus on delivering real results through proven methods and personalized attention.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+	<!-- Experience Sections -->
+	<section class="py-20 bg-white">
+		<div class="container mx-auto px-4 space-y-32">
+			<!-- UBC + Vergie Section -->
+			<div class="flex flex-col md:flex-row items-center gap-12">
+				<div class="md:w-1/2">
+					<h2 class="text-5xl font-bebas tracking-wider mb-6">UBC & Vergie Strength</h2>
+					<p class="text-xl font-inter text-gray-700 mb-6">Working alongside Dr. Jean-Sébastien Blouin and Dr. Cameron Mitchell in the School of Kinesiology, contributing to groundbreaking research in strength and conditioning while developing elite athletes at Vergie Strength.</p>
+					<ul class="list-disc list-inside text-lg font-inter text-gray-600 space-y-2">
+						<li>Research focus on strength development and motor learning</li>
+						<li>Elite athlete development programs</li>
+						<li>Integration of academic research with practical training</li>
+					</ul>
+				</div>
+				<div class="md:w-1/2">
+					<div class="relative h-[400px] rounded-lg overflow-hidden">
+						<div class="flex transition-transform duration-500" id="vergieSlider">
+							<!-- Slide 1 -->
+							<div class="w-full h-[400px] flex-shrink-0">
+								<img src="/images/Vergie/IMG_0292.jpg" alt="Vergie Strength Training" class="w-full h-full object-cover" />
+							</div>
+							<!-- Slide 2 -->
+							<div class="w-full h-[400px] flex-shrink-0">
+								<img src="/images/Vergie/IMG_0293 (1).JPG" alt="Vergie Strength Training" class="w-full h-full object-cover" />
+							</div>
+						</div>
+						<!-- Navigation Dots -->
+						<div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+							<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToSlide(0)"></button>
+							<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToSlide(1)"></button>
+						</div>
+					</div>
+				</div>
+			</div>
 
-  <!-- Team Section -->
-  <section class="py-20">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-16">Our Team</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="John Kalthoff"
-              class="object-cover w-full h-full"
-            />
-          </div>
-          <h3 class="text-xl font-bold mb-2">John Kalthoff</h3>
-          <p class="text-gray-600 mb-4">Founder & Head Trainer</p>
-          <p class="text-gray-600">20+ years of experience in personal training and fitness coaching.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Sarah Johnson"
-              class="object-cover w-full h-full"
-            />
-          </div>
-          <h3 class="text-xl font-bold mb-2">Sarah Johnson</h3>
-          <p class="text-gray-600 mb-4">Nutrition Specialist</p>
-          <p class="text-gray-600">Certified nutritionist with expertise in sports nutrition and meal planning.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Mike Chen"
-              class="object-cover w-full h-full"
-            />
-          </div>
-          <h3 class="text-xl font-bold mb-2">Mike Chen</h3>
-          <p class="text-gray-600 mb-4">Group Training Lead</p>
-          <p class="text-gray-600">Specializes in high-intensity interval training and group fitness.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</Layout> 
+			<!-- Mount Royal Section -->
+			<div class="flex flex-col md:flex-row-reverse items-center gap-12">
+				<div class="md:w-1/2">
+					<h2 class="text-5xl font-bebas tracking-wider mb-6">Mount Royal University</h2>
+					<p class="text-xl font-inter text-gray-700 mb-6">Leading strength and conditioning programs for varsity athletes, implementing cutting-edge training methodologies and performance monitoring systems.</p>
+					<ul class="list-disc list-inside text-lg font-inter text-gray-600 space-y-2">
+						<li>Varsity athletics strength programming</li>
+						<li>Performance testing and monitoring</li>
+						<li>Athlete development strategies</li>
+					</ul>
+				</div>
+				<div class="md:w-1/2 h-[400px] bg-gray-200"></div>
+			</div>
+
+			<!-- McMaster Section -->
+			<div class="flex flex-col md:flex-row items-center gap-12">
+				<div class="md:w-1/2">
+					<h2 class="text-5xl font-bebas tracking-wider mb-6">McMaster University</h2>
+					<p class="text-xl font-inter text-gray-700 mb-6">Developing and implementing strength and conditioning programs for multiple varsity teams while conducting research in performance optimization.</p>
+					<ul class="list-disc list-inside text-lg font-inter text-gray-600 space-y-2">
+						<li>Multi-sport strength and conditioning</li>
+						<li>Performance research initiatives</li>
+						<li>Team-specific training protocols</li>
+					</ul>
+				</div>
+				<div class="md:w-1/2 h-[400px] bg-gray-200"></div>
+			</div>
+
+			<!-- CSI-P Section -->
+			<div class="flex flex-col md:flex-row-reverse items-center gap-12">
+				<div class="md:w-1/2">
+					<h2 class="text-5xl font-bebas tracking-wider mb-6">Canadian Sport Institute Pacific</h2>
+					<p class="text-xl font-inter text-gray-700 mb-6">Working with Olympic and Paralympic athletes, providing high-performance training and rehabilitation services at Canada's premier sport institute.</p>
+					<ul class="list-disc list-inside text-lg font-inter text-gray-600 space-y-2">
+						<li>Olympic athlete preparation</li>
+						<li>High-performance programming</li>
+						<li>Sport-specific strength development</li>
+					</ul>
+				</div>
+				<div class="md:w-1/2 h-[400px] bg-gray-200"></div>
+			</div>
+
+			<!-- Canada Soccer Section -->
+			<div class="flex flex-col md:flex-row items-center gap-12">
+				<div class="md:w-1/2">
+					<h2 class="text-5xl font-bebas tracking-wider mb-6">Canada Soccer</h2>
+					<p class="text-xl font-inter text-gray-700 mb-6">Providing strength and conditioning support for national team programs, focusing on performance optimization and injury prevention.</p>
+					<ul class="list-disc list-inside text-lg font-inter text-gray-600 space-y-2">
+						<li>National team strength programs</li>
+						<li>Tournament preparation</li>
+						<li>Long-term athlete development</li>
+					</ul>
+				</div>
+				<div class="md:w-1/2">
+					<div class="relative h-[400px] rounded-lg overflow-hidden">
+						<div class="flex transition-transform duration-500" id="cnwstSlider">
+							<!-- Slide 1 -->
+							<div class="w-full h-[400px] flex-shrink-0">
+								<img src="/images/CNWST/kalthoffCNWST.png" alt="Canada Soccer Training" class="w-full h-full object-cover" />
+							</div>
+							<!-- Slide 2 -->
+							<div class="w-full h-[400px] flex-shrink-0">
+								<img src="/images/CNWST/kalthoffCNWST2.png" alt="Canada Soccer Training" class="w-full h-full object-cover" />
+							</div>
+							<!-- Slide 3 -->
+							<div class="w-full h-[400px] flex-shrink-0">
+								<img src="/images/CNWST/e7dfdb49-d2f5-4d5f-816a-ede1ae76e50e.jpg" alt="Canada Soccer Training" class="w-full h-full object-cover" />
+							</div>
+							<!-- Slide 4 -->
+							<div class="w-full h-[400px] flex-shrink-0">
+								<img src="/images/CNWST/de5a1420-b93f-4b5c-96e1-82301542dfd0.jpg" alt="Canada Soccer Training" class="w-full h-full object-cover" />
+							</div>
+							<!-- Slide 5 -->
+							<div class="w-full h-[400px] flex-shrink-0">
+								<img src="/images/CNWST/C98E40B7-502E-419C-88AC-607F1FDB792D.jpg" alt="Canada Soccer Training" class="w-full h-full object-cover" />
+							</div>
+						</div>
+						<!-- Navigation Dots -->
+						<div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+							<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(0)"></button>
+							<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(1)"></button>
+							<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(2)"></button>
+							<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(3)"></button>
+							<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(4)"></button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- RCA Section -->
+			<div class="flex flex-col md:flex-row-reverse items-center gap-12">
+				<div class="md:w-1/2">
+					<h2 class="text-5xl font-bebas tracking-wider mb-6">Rowing Canada Aviron</h2>
+					<p class="text-xl font-inter text-gray-700 mb-6">Developing and implementing strength programs for national team rowers, focusing on power development and performance enhancement.</p>
+					<ul class="list-disc list-inside text-lg font-inter text-gray-600 space-y-2">
+						<li>National team strength training</li>
+						<li>Power development protocols</li>
+						<li>Performance monitoring systems</li>
+					</ul>
+				</div>
+				<div class="md:w-1/2 h-[400px] bg-gray-200"></div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<script>
+	let currentHeroSlide = 0;
+	const heroSlider = document.getElementById('heroSlider');
+	let currentVergieSlide = 0;
+	const vergieSlider = document.getElementById('vergieSlider');
+	let currentCNWSTSlide = 0;
+	const cnwstSlider = document.getElementById('cnwstSlider');
+
+	function updateHeroSlider() {
+		if (heroSlider) {
+			heroSlider.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
+		}
+	}
+
+	function updateVergieSlider() {
+		if (vergieSlider) {
+			vergieSlider.style.transform = `translateX(-${currentVergieSlide * 100}%)`;
+		}
+	}
+
+	function updateCNWSTSlider() {
+		if (cnwstSlider) {
+			cnwstSlider.style.transform = `translateX(-${currentCNWSTSlide * 100}%)`;
+		}
+	}
+
+	function nextHeroSlide() {
+		currentHeroSlide = (currentHeroSlide + 1) % 1; // Update this when more slides are added
+		updateHeroSlider();
+	}
+
+	function nextVergieSlide() {
+		currentVergieSlide = (currentVergieSlide + 1) % 2;
+		updateVergieSlider();
+	}
+
+	function nextCNWSTSlide() {
+		currentCNWSTSlide = (currentCNWSTSlide + 1) % 5;
+		updateCNWSTSlider();
+	}
+
+	function goToSlide(slideIndex: number) {
+		currentVergieSlide = slideIndex;
+		updateVergieSlider();
+	}
+
+	function goToCNWSTSlide(slideIndex: number) {
+		currentCNWSTSlide = slideIndex;
+		updateCNWSTSlider();
+	}
+
+	// Auto advance hero slides every 5 seconds
+	setInterval(nextHeroSlide, 5000);
+	// Auto advance vergie slides every 5 seconds
+	setInterval(nextVergieSlide, 5000);
+	// Auto advance CNWST slides every 5 seconds
+	setInterval(nextCNWSTSlide, 5000);
+</script> 

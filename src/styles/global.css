@@ -11,6 +11,16 @@
     @apply text-gray-800;
     font-family: 'Inter', sans-serif;
   }
+
+  :root {
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
 }
 
 @layer components {
@@ -54,19 +64,17 @@
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
 @keyframes spin-in {
-  0% {
+  from {
     transform: rotate(0deg);
   }
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
@@ -79,10 +87,40 @@
   animation: spin-in 1s ease-out forwards;
 }
 
+/* Custom aspect ratios */
+.aspect-square {
+  aspect-ratio: 1;
+}
+
+/* Typography */
+.font-bebas {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Transitions */
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Shadows */
+.shadow-strong {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+              0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
 /* Hover Effects */
-.group:hover .group-hover\:scale-110 {
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
+.hover-lift {
+  transition: transform 0.2s ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
 }
 
 /* Custom Typography */

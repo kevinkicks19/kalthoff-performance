@@ -2,14 +2,23 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Nutrition & Supplements - Kalthoff Performance">
+<Layout title="Nutrition - Kalthoff Performance">
   <section class="min-h-screen bg-black text-white py-20">
     <div class="container mx-auto px-4 max-w-4xl">
-      <h1 class="text-6xl font-black mb-8 tracking-tight">Nutrition & Supplements</h1>
+      <h1 class="text-6xl font-black mb-8 tracking-tight">Nutrition</h1>
+      
+      <div class="relative w-full h-[400px] mb-12 rounded-lg overflow-hidden">
+        <img 
+          src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2070&auto=format&fit=crop" 
+          alt="Healthy nutrition and meal planning" 
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      </div>
       
       <div class="prose prose-lg prose-invert max-w-none">
         <p class="text-xl text-gray-300 mb-8">
-          Expert guidance on nutrition and supplementation to optimize your performance and recovery. Our evidence-based approach ensures you're fueling your body effectively for your specific goals.
+          Proper nutrition is the foundation of performance, recovery, and overall well-being. Whether you're an athlete striving for peak performance or someone focused on long-term health, fueling your body with the right nutrients is essential. I take a science-based approach to nutrition, focusing on macronutrient balance, hydration, and strategic supplementation to support energy levels, muscle recovery, and optimal function. As part of my monthly subscription, I offer personalized nutrition coaching to help you develop sustainable habits that complement your training and lifestyle—ensuring you get the most out of every workout and every meal.
         </p>
 
         <h2 class="text-3xl font-bold mt-12 mb-6">What's Included</h2>
@@ -18,27 +27,56 @@ import Layout from '../../layouts/Layout.astro';
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Personalized nutrition planning</span>
+            <span>Personalized nutrition plans based on your goals</span>
           </li>
           <li class="flex items-start">
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Supplement recommendations and timing</span>
+            <span>Macronutrient and hydration guidance</span>
           </li>
           <li class="flex items-start">
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Meal timing strategies for performance</span>
+            <span>Supplementation recommendations</span>
           </li>
           <li class="flex items-start">
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Recovery nutrition protocols</span>
+            <span>Regular nutrition coaching and support</span>
           </li>
         </ul>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6">Program Delivery</h2>
+        <div class="bg-white/5 rounded-lg p-6 mb-12">
+          <h3 class="text-2xl font-bold mb-4">Powered by TeamBuildr</h3>
+          <img src="/images/full-logo-white-orange.png" alt="TeamBuildr Logo" class="h-12 mb-6" />
+          <p class="text-gray-300">
+            All programming is delivered through TeamBuildr, a professional training app that provides:
+          </p>
+          <ul class="space-y-4 text-gray-300 mt-4">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Easy-to-follow workout instructions with video demonstrations</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Progress tracking and performance metrics</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Direct communication with your coach</span>
+            </li>
+          </ul>
+        </div>
 
         <h2 class="text-3xl font-bold mt-12 mb-6">Who Is This For?</h2>
         <ul class="space-y-4 text-gray-300">
@@ -46,26 +84,26 @@ import Layout from '../../layouts/Layout.astro';
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Athletes looking to optimize performance</span>
+            <span>Athletes seeking performance optimization</span>
           </li>
           <li class="flex items-start">
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Individuals seeking body composition changes</span>
+            <span>Individuals focused on long-term health</span>
           </li>
           <li class="flex items-start">
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Anyone wanting to improve their nutritional habits</span>
+            <span>Anyone looking to improve their nutrition habits</span>
           </li>
         </ul>
 
         <div class="mt-12 bg-white/5 rounded-lg p-8 border border-white/10">
           <h2 class="text-3xl font-bold mb-6">Ready to Optimize Your Nutrition?</h2>
           <p class="text-gray-300 mb-8">
-            Let us help you fuel your performance with expert nutrition and supplementation guidance.
+            Take the first step towards better nutrition and improved performance with our expert guidance.
           </p>
           <a href="/contact" class="inline-block bg-white text-black px-8 py-3 rounded-full text-lg font-bold tracking-wide hover:bg-gray-200 transition duration-300">
             Get Started

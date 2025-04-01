@@ -7,9 +7,18 @@ import Layout from '../../layouts/Layout.astro';
     <div class="container mx-auto px-4 max-w-4xl">
       <h1 class="text-6xl font-black mb-8 tracking-tight">Home Gym Design</h1>
       
+      <div class="relative w-full h-[400px] mb-12 rounded-lg overflow-hidden">
+        <img 
+          src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop" 
+          alt="Modern home gym setup" 
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      </div>
+      
       <div class="prose prose-lg prose-invert max-w-none">
         <p class="text-xl text-gray-300 mb-8">
-          Professional consultation for creating the perfect home gym setup tailored to your space, goals, and budget. We'll help you design an efficient and effective training environment.
+          A well-designed home gym can be the key to consistent training and long-term success. I offer expert guidance in creating a functional, efficient, and inspiring home training space that meets your specific needs and goals. From equipment selection to layout optimization, I'll help you design a home gym that maximizes your available space while providing everything you need for effective training. Whether you're starting from scratch or looking to upgrade your existing setup, I'll ensure your home gym supports your training goals and lifestyle.
         </p>
 
         <h2 class="text-3xl font-bold mt-12 mb-6">What's Included</h2>
@@ -18,27 +27,56 @@ import Layout from '../../layouts/Layout.astro';
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Space assessment and layout planning</span>
+            <span>Customized layout design based on your space</span>
           </li>
           <li class="flex items-start">
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Equipment recommendations and sourcing</span>
+            <span>Equipment recommendations and specifications</span>
           </li>
           <li class="flex items-start">
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Budget optimization strategies</span>
+            <span>Safety considerations and proper spacing guidelines</span>
           </li>
           <li class="flex items-start">
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Installation guidance and setup support</span>
+            <span>Budget optimization and equipment prioritization</span>
           </li>
         </ul>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6">Program Delivery</h2>
+        <div class="bg-white/5 rounded-lg p-6 mb-12">
+          <h3 class="text-2xl font-bold mb-4">Powered by TeamBuildr</h3>
+          <img src="/images/full-logo-white-orange.png" alt="TeamBuildr Logo" class="h-12 mb-6" />
+          <p class="text-gray-300">
+            All programming is delivered through TeamBuildr, a professional training app that provides:
+          </p>
+          <ul class="space-y-4 text-gray-300 mt-4">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Easy-to-follow workout instructions with video demonstrations</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Progress tracking and performance metrics</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Direct communication with your coach</span>
+            </li>
+          </ul>
+        </div>
 
         <h2 class="text-3xl font-bold mt-12 mb-6">Who Is This For?</h2>
         <ul class="space-y-4 text-gray-300">
@@ -46,26 +84,26 @@ import Layout from '../../layouts/Layout.astro';
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Home fitness enthusiasts</span>
+            <span>Homeowners looking to create a dedicated training space</span>
           </li>
           <li class="flex items-start">
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Athletes needing personal training space</span>
+            <span>Individuals wanting to optimize their existing home gym</span>
           </li>
           <li class="flex items-start">
             <svg class="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span>Fitness facilities seeking expert layout consultation</span>
+            <span>Anyone seeking expert guidance on home gym setup</span>
           </li>
         </ul>
 
         <div class="mt-12 bg-white/5 rounded-lg p-8 border border-white/10">
-          <h2 class="text-3xl font-bold mb-6">Ready to Build Your Perfect Training Space?</h2>
+          <h2 class="text-3xl font-bold mb-6">Ready to Design Your Home Gym?</h2>
           <p class="text-gray-300 mb-8">
-            Let us help you create an optimal training environment that fits your needs and space.
+            Take the first step towards creating your ideal training space with our expert guidance.
           </p>
           <a href="/contact" class="inline-block bg-white text-black px-8 py-3 rounded-full text-lg font-bold tracking-wide hover:bg-gray-200 transition duration-300">
             Get Started
