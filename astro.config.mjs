@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'https://kevinkalthoff.github.io',
-  base: '/KalthoffPerformance',
+  site: 'https://kevinkicks19.github.io',
+  base: '/kalthoff-performance',
   output: 'static'
 });
