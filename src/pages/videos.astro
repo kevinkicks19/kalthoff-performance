@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getVideos } from '../lib/contentful';
+
+// Fetch videos from Contentful
+const videos = await getVideos();
+---
+
+<Layout title="Videos - Kalthoff Performance">
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          Training Videos
+        </h2>
+        <p class="mt-4 text-lg text-gray-500">
+          Watch our latest training tips, techniques, and success stories
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {videos.map((video) => (
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="aspect-w-16 aspect-h-9">
+              <iframe
+                class="w-full h-full"
+                src={`https://www.youtube.com/embed/${video.videoId}`}
+                title={video.title}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900">{video.title}</h3>
+              <p class="mt-2 text-gray-600">{video.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout> 
