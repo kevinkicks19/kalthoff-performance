@@ -1,78 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { parseTestimonialsFromCSV, getDisplayTestimonials } from '../lib/testimonials';
 
-// Import testimonials data
-const testimonialsData = await fetch(import.meta.env.DEV ? 'http://localhost:4321/docs/testimonials.json' : 'https://kalthoffperformance.com/docs/testimonials.json')
-	.then(response => response.json())
-	.catch(error => {
-		console.error('Error loading testimonials:', error);
-		return [];
-	});
+// Load testimonials from CSV
+const testimonials = await parseTestimonialsFromCSV();
 
-// Define types for testimonials
-type TestimonialItem = {
-	testimonial: string;
-};
-
-type ParsedTestimonial = {
-	content: string;
-	name: string;
-	title: string;
-};
-
-// Extract and parse testimonials
-function parseTestimonials(data: TestimonialItem[]): ParsedTestimonial[] {
-	const result: ParsedTestimonial[] = [];
-	
-	data.forEach((item: TestimonialItem) => {
-		const testimonialText = item.testimonial;
-		
-		// Split the large text into individual testimonials
-		const individualTestimonials = testimonialText.split(/(?=\n[-–—]\s*[A-Za-z])/g);
-		
-		individualTestimonials.forEach((text: string) => {
-			// Extract name and title using regex
-			const nameMatch = text.match(/[-–—]\s*([A-Za-z\s]+)\s*(?:Canadian Olympic Rower|Former|Canadian|Assistant Coach|U23 World Champion|Olympic|Silver Medalist|2x Olympian|2x Olympic Medalist)/);
-			
-			if (nameMatch) {
-				const name = nameMatch[1].trim();
-				
-				// Extract title that follows the name
-				const titleMatch = text.match(new RegExp(`${name}\\s+(.*?)(?=\\n|$)`));
-				const title = titleMatch ? titleMatch[1].trim() : "";
-				
-				// Extract the testimonial content (everything before the name)
-				const content = text.split(nameMatch[0])[0].trim().replace(/^["']|["']$/g, '');
-				
-				if (content && name) {
-					result.push({
-						content,
-						name,
-						title
-					});
-				}
-			}
-		});
-	});
-	
-	return result;
-}
-
-const testimonials = parseTestimonials(testimonialsData);
-
-// Shuffle and get a subset of testimonials for the slider
-function shuffleArray<T>(array: T[]): T[] {
-	const newArray = [...array];
-	for (let i = newArray.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-		[newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-	}
-	return newArray;
-}
-
-// Get 5 random testimonials for the slider
-const displayTestimonials = shuffleArray(testimonials).slice(0, 5);
-
+// Get 5 random testimonials to display
+const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
