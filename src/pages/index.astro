@@ -4,9 +4,17 @@ import { parseTestimonialsFromCSV, getDisplayTestimonials } from '../lib/testimo
 
 // Load testimonials from CSV
 const testimonials = await parseTestimonialsFromCSV();
+console.log('Total testimonials loaded:', testimonials.length);
 
 // Get 5 random testimonials to display
 const displayTestimonials = getDisplayTestimonials(testimonials, 5);
+console.log('Display testimonials:', JSON.stringify(displayTestimonials, null, 2));
+
+// Ensure we have testimonials to display
+if (!displayTestimonials.length) {
+	console.error('No testimonials available to display');
+}
+
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
@@ -22,7 +30,7 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 		margin-bottom: 1.5rem;
 		line-height: 1.8;
 		text-align: left;
-		font-size: 1.1rem;
+		font-size: 1rem;
 		max-height: calc(1.8em * 7); /* Height for 7 lines of text */
 		overflow: hidden;
 		transition: all 0.5s ease-in-out;
@@ -31,7 +39,7 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 	.testimonial-content.expanded {
 		max-height: none !important; /* Override to remove height restriction completely */
 		overflow-y: auto;
-		padding-bottom: 2rem; /* Add more space at the bottom */
+		padding-bottom: 3rem; /* Increased space at the bottom for the button */
 	}
 	
 	/* Show more button animations */
@@ -92,22 +100,22 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 	/* Larger quote marks */
 	.testimonial-content::before {
 		content: '"';
-		font-size: 5rem;
+		font-size: 4rem;
 		line-height: 1;
 		color: #eee;
 		position: absolute;
-		top: -25px;
+		top: -20px;
 		left: -15px;
 		z-index: -1;
 	}
 	
 	.testimonial-content::after {
 		content: '"';
-		font-size: 5rem;
+		font-size: 4rem;
 		line-height: 1;
 		color: #eee;
 		position: absolute;
-		bottom: -60px;
+		bottom: -50px;
 		right: -15px;
 		z-index: -1;
 	}
@@ -116,7 +124,7 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 		position: relative;
 		margin-bottom: 0.5rem;
 		padding-bottom: 2rem; /* Add space for the button */
-		flex: 1 0 auto; /* Allow content to grow but not shrink */
+		min-height: 300px; /* Minimum height to prevent collapse */
 	}
 	
 	.testimonial-content-wrapper::after {
@@ -149,7 +157,7 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 		left: 0;
 		top: 0;
 		pointer-events: none;
-		box-sizing: border-box; /* Add box-sizing to prevent overflow */
+		box-sizing: border-box;
 	}
 	
 	.testimonial-slide.active {
@@ -164,37 +172,51 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 	
 	.testimonial-slide blockquote {
 		height: auto;
-		min-height: 600px; /* Increased height for testimonial blockquotes */
+		min-height: 500px; /* Base minimum height */
 		display: flex;
 		flex-direction: column;
-		transition: height 0.5s ease-in-out;
-		justify-content: space-between; /* Ensures content and footer are spread out */
+		transition: all 0.5s ease-in-out;
 		width: 100%;
 		max-width: 100%;
 		box-sizing: border-box;
+		background: white;
+	}
+	
+	.testimonial-slide.expanded-slide blockquote {
+		min-height: 600px; /* Increased height for expanded state */
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 	}
 	
 	.testimonial-slide blockquote footer {
-		margin-top: 2rem;
+		margin-top: auto; /* Push to bottom of flex container */
+		padding-top: 2rem;
+		background: white;
 		position: relative;
 		z-index: 5;
-		flex-shrink: 0; /* Prevent footer from shrinking */
 	}
 	
 	.testimonial-name {
 		font-weight: 600;
 		letter-spacing: 0.05em;
 		transition: color 0.3s ease;
+		max-width: 80%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		margin: 0 auto;
 	}
 	
 	.testimonial-title {
 		font-style: italic;
 		color: #666;
-		max-width: 100%;
-		margin: 0 auto;
+		max-width: 80%;
+		margin: 0.5rem auto 0;
 		overflow-wrap: break-word;
 		word-wrap: break-word;
 		hyphens: auto;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 	
 	.testimonial-content::-webkit-scrollbar {
@@ -218,15 +240,8 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 	/* Container for slides */
 	#testimonialSlider {
 		position: relative;
-		min-height: 750px; /* Increased minimum height to accommodate larger content */
+		min-height: 550px;
 		display: block;
-	}
-
-	.testimonial-slide.expanded-slide blockquote {
-		height: auto !important;
-		min-height: 700px; /* Increased minimum height for expanded testimonials */
-		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Add shadow to emphasize expanded testimonial */
-		z-index: 20; /* Ensure expanded testimonial is above others */
 	}
 
 	/* Adjust container sizing to prevent horizontal overflow */
@@ -244,13 +259,16 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 		<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBkPSJNMzYuMzY0IDM2LjM2NGwtMzYuMzY0IDM2LjM2NHYtMzYuMzY0aDM2LjM2NHptLTM2LjM2NCAwTDM2LjM2NCAwaDM2LjM2NHYzNi4zNjRIMHoiLz48L2c+PC9zdmc+')] opacity-5"></div>
 		
 		<!-- Circular Navigation -->
-		<div class="relative w-[800px] h-[800px] flex items-center justify-center">
+		<div class="relative w-[600px] h-[600px] md:w-[800px] md:h-[800px] flex items-center justify-center">
 			<!-- Center Image -->
-			<div class="absolute w-[500px] h-[500px] rounded-full overflow-hidden border-4 border-white shadow-lg animate-fade-in z-10">
+			<div class="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full overflow-hidden border-4 border-white shadow-lg animate-fade-in z-10">
 				<img
 					src="/images/kalthoffMedal.jpg"
 					alt="Olympic Gold Medal Celebration"
 					class="w-full h-full object-cover"
+					loading="eager"
+					decoding="async"
+					fetchpriority="high"
 				/>
 				<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end justify-center pb-8">
 					
@@ -260,28 +278,28 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 			<!-- Navigation Buttons -->
 			<div class="absolute w-full h-full animate-spin-in">
 				<!-- Top -->
-				<a href="/services/performance-programming" class="absolute top-[2%] left-1/2 transform -translate-x-1/2 w-40 h-40 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
-					<span class="text-xl font-bebas tracking-wider text-center px-4">Performance Training</span>
+				<a href="/services/performance-programming" class="absolute top-[10%] left-1/2 transform -translate-x-1/2 w-24 h-24 md:w-40 md:h-40 md:top-[2%] bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
+					<span class="text-sm md:text-xl font-bebas tracking-wider text-center px-2 md:px-4">Performance Training</span>
 				</a>
 				<!-- Top Right -->
-				<a href="/services/rehab-programming" class="absolute top-[20%] right-[5%] transform w-40 h-40 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
-					<span class="text-xl font-bebas tracking-wider text-center px-4">Rehab Training</span>
+				<a href="/services/rehab-programming" class="absolute top-[20%] right-[5%] transform w-24 h-24 md:w-40 md:h-40 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
+					<span class="text-sm md:text-xl font-bebas tracking-wider text-center px-2 md:px-4">Rehab Training</span>
 				</a>
 				<!-- Bottom Right -->
-				<a href="/services/daily-programming" class="absolute bottom-[20%] right-[5%] transform w-40 h-40 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
-					<span class="text-xl font-bebas tracking-wider text-center px-4">Daily Training</span>
+				<a href="/services/daily-programming" class="absolute bottom-[20%] right-[5%] transform w-24 h-24 md:w-40 md:h-40 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
+					<span class="text-sm md:text-xl font-bebas tracking-wider text-center px-2 md:px-4">Daily Training</span>
 				</a>
 				<!-- Bottom -->
-				<a href="/services" class="absolute bottom-[2%] left-1/2 transform -translate-x-1/2 w-40 h-40 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
-					<span class="text-xl font-bebas tracking-wider text-center px-4">Other Services</span>
+				<a href="/services" class="absolute bottom-[10%] left-1/2 transform -translate-x-1/2 w-24 h-24 md:w-40 md:h-40 md:bottom-[2%] bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
+					<span class="text-sm md:text-xl font-bebas tracking-wider text-center px-2 md:px-4">Other Services</span>
 				</a>
 				<!-- Bottom Left -->
-				<a href="/contact" class="absolute bottom-[20%] left-[5%] transform w-40 h-40 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
-					<span class="text-xl font-bebas tracking-wider">Contact</span>
+				<a href="/contact" class="absolute bottom-[20%] left-[5%] transform w-24 h-24 md:w-40 md:h-40 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
+					<span class="text-sm md:text-xl font-bebas tracking-wider text-center px-2 md:px-4">Contact</span>
 				</a>
 				<!-- Top Left -->
-				<a href="/about" class="absolute top-[20%] left-[5%] transform w-40 h-40 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
-					<span class="text-xl font-bebas tracking-wider">About</span>
+				<a href="/about" class="absolute top-[20%] left-[5%] transform w-24 h-24 md:w-40 md:h-40 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all duration-300">
+					<span class="text-sm md:text-xl font-bebas tracking-wider text-center px-2 md:px-4">About</span>
 				</a>
 			</div>
 		</div>
@@ -289,32 +307,32 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 
 	<!-- Testimonials Section -->
 	<section class="py-32 bg-white">
-		<div class="container mx-auto px-4 overflow-x-hidden">
-			<h2 class="text-6xl font-bebas text-center mb-20 tracking-wider">What Our Athletes Say</h2>
+		<div class="container mx-auto px-4">
+			<h2 class="text-4xl md:text-6xl font-bebas text-center mb-12 md:mb-20 tracking-wider">What Our Athletes Say</h2>
 			
 			<!-- Testimonial Slideshow -->
-			<div class="relative max-w-6xl mx-auto px-4 md:px-12">
+			<div class="relative max-w-5xl mx-auto px-2 sm:px-4 md:px-8">
 				<!-- Testimonials Container -->
 				<div class="overflow-hidden relative">
 					<div id="testimonialSlider">
 						{displayTestimonials.map((testimonial, index) => (
-							<div class={`px-2 sm:px-4 md:px-6 testimonial-slide ${index === 0 ? 'active' : ''}`}>
-								<blockquote class="text-center bg-white rounded-lg p-4 sm:p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 relative">
-									<div class="testimonial-content-wrapper relative">
-										<p class="font-inter text-gray-700 italic overflow-y-auto testimonial-content"
-											data-full-content={testimonial.fullContent}
-										>{testimonial.content}</p>
-										<button class="show-more-btn" data-action="toggle" data-expanded="false" aria-label="Toggle content visibility"></button>
+							<div class={`testimonial-slide ${index === 0 ? 'active' : ''}`}>
+								<blockquote class="text-center bg-white rounded-lg p-4 sm:p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+									<!-- Name and Title at the top -->
+									<header class="mb-6">
+										<cite class="font-bebas text-lg md:text-2xl tracking-wide testimonial-name">{testimonial.name}</cite>
+										<p class="text-gray-600 font-inter text-sm testimonial-title">
+											{[testimonial.position, testimonial.organization].filter(Boolean).join(', ')}
+										</p>
+									</header>
+									
+									<!-- Testimonial Content -->
+									<div class="testimonial-content-wrapper">
+										<p class="testimonial-content font-inter text-gray-700 italic"
+											data-full-content={testimonial.testimonial}
+										>{testimonial.testimonial}</p>
+										<button class="show-more-btn" data-action="toggle" data-expanded="false" aria-label="Show more content"></button>
 									</div>
-									<footer class="flex flex-col items-center mt-6">
-										<div class="w-16 h-16 md:w-20 md:h-20 bg-gray-200 rounded-full mb-3 md:mb-4 flex items-center justify-center overflow-hidden">
-											<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
-												<path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-											</svg>
-										</div>
-										<cite class="font-bebas text-xl md:text-2xl tracking-wide testimonial-name">{testimonial.name}</cite>
-										<span class="text-gray-600 font-inter text-xs md:text-sm testimonial-title">{testimonial.title}</span>
-									</footer>
 								</blockquote>
 							</div>
 						))}
@@ -338,17 +356,30 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
 					</svg>
 				</button>
+			</div>
 
-				<!-- Dots -->
-				<div class="flex justify-center mt-8 space-x-2">
-					{displayTestimonials.map((_, index) => (
-						<button 
-							class={`w-3 h-3 rounded-full ${index === 0 ? 'bg-black' : 'bg-gray-300'}`} 
-							data-slide-index={index}
-							aria-label={`Go to slide ${index + 1}`}
-						></button>
-					))}
-				</div>
+			<!-- Dots -->
+			<div class="flex justify-center mt-8 space-x-2">
+				{displayTestimonials.map((_, index) => (
+					<button 
+						class={`w-3 h-3 rounded-full ${index === 0 ? 'bg-black' : 'bg-gray-300'}`} 
+						data-slide-index={index}
+						aria-label={`Go to slide ${index + 1}`}
+					></button>
+				))}
+			</div>
+
+			<!-- Link to Testimonials Page -->
+			<div class="text-center mt-12">
+				<a 
+					href="/testimonials" 
+					class="inline-flex items-center gap-2 px-8 py-3 bg-black text-white rounded-full font-bebas tracking-wider text-lg hover:bg-gray-800 transition-all duration-300 hover:transform hover:scale-105"
+				>
+					View All Testimonials
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+					</svg>
+				</a>
 			</div>
 		</div>
 	</section>
@@ -365,20 +396,20 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 	</section>
 </Layout>
 
-<script define:vars={{ testimonialCount: displayTestimonials.length }}>
+<script>
 	document.addEventListener('DOMContentLoaded', function() {
-		// Get all slides, dots, and buttons
-		const slides = document.querySelectorAll('.testimonial-slide');
-		const dots = document.querySelectorAll('[data-slide-index]');
-		const prevButton = document.querySelector('[aria-label="Previous testimonial"]');
-		const nextButton = document.querySelector('[aria-label="Next testimonial"]');
+		// Get all slides, dots, and buttons with proper type annotations
+		const slides = Array.from(document.querySelectorAll<HTMLElement>('.testimonial-slide'));
+		const dots = Array.from(document.querySelectorAll<HTMLElement>('[data-slide-index]'));
+		const prevButton = document.querySelector<HTMLButtonElement>('[aria-label="Previous testimonial"]');
+		const nextButton = document.querySelector<HTMLButtonElement>('[aria-label="Next testimonial"]');
 		let currentSlide = 0;
 		let sliderPaused = false;
-		let sliderInterval;
+		let sliderInterval: number | undefined;
 		
 		// Check for text overflow and set up "Show More" buttons
-		const testimonialContents = document.querySelectorAll('.testimonial-content');
-		const showMoreButtons = document.querySelectorAll('.show-more-btn');
+		const testimonialContents = Array.from(document.querySelectorAll<HTMLDivElement>('.testimonial-content'));
+		const showMoreButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.show-more-btn'));
 		
 		testimonialContents.forEach((content, index) => {
 			// Force layout recalculation to get accurate height measurements
@@ -386,58 +417,77 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 			
 			// If content height is greater than container height, show the button
 			if (content.scrollHeight > content.clientHeight + 5) { // Adding small buffer for browser differences
-				content.parentElement.classList.add('overflow');
-				const button = showMoreButtons[index];
-				button.classList.add('visible');
+				const parent = content.parentElement;
+				if (parent) {
+					parent.classList.add('overflow');
+				}
 				
-				// Add click event to toggle expanded state
-				button.addEventListener('click', function(e) {
-					e.preventDefault();
-					e.stopPropagation();
+				const button = showMoreButtons[index];
+				if (button) {
+					button.classList.add('visible');
 					
-					const isExpanded = content.classList.contains('expanded');
-					const blockquote = content.closest('blockquote');
-					const slide = content.closest('.testimonial-slide');
-					
-					if (isExpanded) {
-						// Collapse
-						content.classList.remove('expanded');
-						content.parentElement.classList.remove('expanded');
-						// Restore truncated content
-						content.textContent = content.dataset.originalContent || content.textContent;
-						if (blockquote) {
-							blockquote.style.height = '';
-							blockquote.style.zIndex = '';
-						}
-						if (slide) slide.classList.remove('expanded-slide');
-						this.setAttribute('data-expanded', 'false');
-						this.setAttribute('aria-label', 'Show more content');
-						resumeSlider();
+					// Add click event to toggle expanded state
+					button.addEventListener('click', function(e) {
+						e.preventDefault();
+						e.stopPropagation();
 						
-						// Scroll back to top of the content after collapsing
-						content.scrollTop = 0;
-					} else {
-						// Expand and show full content
-						// Store original content if not already stored
-						if (!content.dataset.originalContent) {
-							content.dataset.originalContent = content.textContent;
+						const isExpanded = content.classList.contains('expanded');
+						const blockquote = content.closest('blockquote') as HTMLElement | null;
+						const slide = content.closest('.testimonial-slide') as HTMLElement | null;
+						
+						if (isExpanded) {
+							// Collapse
+							content.classList.remove('expanded');
+							if (parent) {
+								parent.classList.remove('expanded');
+							}
+							// Restore truncated content
+							if (content instanceof HTMLElement) {
+								content.textContent = content.dataset.originalContent || content.textContent;
+							}
+							if (blockquote) {
+								blockquote.style.height = '';
+								blockquote.style.zIndex = '';
+							}
+							if (slide) {
+								slide.classList.remove('expanded-slide');
+							}
+							button.setAttribute('data-expanded', 'false');
+							button.setAttribute('aria-label', 'Show more content');
+							resumeSlider();
+							
+							// Scroll back to top of the content after collapsing
+							content.scrollTop = 0;
+						} else {
+							// Expand and show full content
+							if (content instanceof HTMLElement) {
+								// Store original content if not already stored
+								if (!content.dataset.originalContent) {
+									content.dataset.originalContent = content.textContent || '';
+								}
+								// Set full content if available
+								const fullContent = content.getAttribute('data-full-content');
+								if (fullContent) {
+									content.textContent = fullContent;
+								}
+							}
+							content.classList.add('expanded');
+							if (parent) {
+								parent.classList.add('expanded');
+							}
+							if (blockquote) {
+								blockquote.style.height = 'auto';
+								blockquote.style.zIndex = '20';
+							}
+							if (slide) {
+								slide.classList.add('expanded-slide');
+							}
+							button.setAttribute('data-expanded', 'true');
+							button.setAttribute('aria-label', 'Show less content');
+							pauseSlider();
 						}
-						// Set full content if available
-						if (content.dataset.fullContent) {
-							content.textContent = content.dataset.fullContent;
-						}
-						content.classList.add('expanded');
-						content.parentElement.classList.add('expanded');
-						if (blockquote) {
-							blockquote.style.height = 'auto';
-							blockquote.style.zIndex = '20';
-						}
-						if (slide) slide.classList.add('expanded-slide');
-						this.setAttribute('data-expanded', 'true');
-						this.setAttribute('aria-label', 'Show less content');
-						pauseSlider();
-					}
-				});
+					});
+				}
 			}
 		});
 		
@@ -474,37 +524,42 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 		});
 		
 		// Add event listeners for prev/next buttons
-		prevButton.addEventListener('click', () => {
-			currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-			updateSlider();
+		if (prevButton && nextButton) {
+			prevButton.addEventListener('click', () => {
+				currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+				updateSlider();
+				
+				// If slider is paused due to expanded content, collapse it
+				collapseCurrentExpandedContent();
+			});
 			
-			// If slider is paused due to expanded content, collapse it
-			collapseCurrentExpandedContent();
-		});
-		
-		nextButton.addEventListener('click', () => {
-			currentSlide = (currentSlide + 1) % slides.length;
-			updateSlider();
-			
-			// If slider is paused due to expanded content, collapse it
-			collapseCurrentExpandedContent();
-		});
+			nextButton.addEventListener('click', () => {
+				currentSlide = (currentSlide + 1) % slides.length;
+				updateSlider();
+				
+				// If slider is paused due to expanded content, collapse it
+				collapseCurrentExpandedContent();
+			});
+		}
 		
 		// Helper function to collapse any expanded content when navigating
 		function collapseCurrentExpandedContent() {
 			const activeSlide = slides[currentSlide];
 			if (activeSlide) {
-				const content = activeSlide.querySelector('.testimonial-content');
-				const button = activeSlide.querySelector('.show-more-btn');
-				const blockquote = activeSlide.querySelector('blockquote');
+				const content = activeSlide.querySelector<HTMLDivElement>('.testimonial-content');
+				const button = activeSlide.querySelector<HTMLButtonElement>('.show-more-btn');
+				const blockquote = activeSlide.querySelector<HTMLElement>('blockquote');
 				
 				if (content && content.classList.contains('expanded')) {
 					// Restore truncated content
-					if (content.dataset.originalContent) {
+					if (content instanceof HTMLElement && content.dataset.originalContent) {
 						content.textContent = content.dataset.originalContent;
 					}
 					content.classList.remove('expanded');
-					content.parentElement.classList.remove('expanded');
+					const parent = content.parentElement;
+					if (parent) {
+						parent.classList.remove('expanded');
+					}
 					if (blockquote) {
 						blockquote.style.height = '';
 						blockquote.style.zIndex = '';
@@ -523,7 +578,9 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 		// Pause the slider
 		function pauseSlider() {
 			sliderPaused = true;
-			clearInterval(sliderInterval);
+			if (sliderInterval) {
+				clearInterval(sliderInterval);
+			}
 		}
 		
 		// Resume the slider
@@ -534,8 +591,10 @@ const displayTestimonials = getDisplayTestimonials(testimonials, 5);
 		
 		// Start auto-advance
 		function startAutoSlide() {
-			clearInterval(sliderInterval);
-			sliderInterval = setInterval(() => {
+			if (sliderInterval) {
+				clearInterval(sliderInterval);
+			}
+			sliderInterval = window.setInterval(() => {
 				if (!sliderPaused) {
 					currentSlide = (currentSlide + 1) % slides.length;
 					updateSlider();
