@@ -9,11 +9,16 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.3.0",
+    "@sentry/astro": "^9.11.0",
     "astro": "^5.5.5",
-    "contentful": "^11.5.12"
+    "contentful": "^11.5.12",
+    "csv-parse": "^5.6.0",
+    "mammoth": "^1.9.0"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
+    "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1"

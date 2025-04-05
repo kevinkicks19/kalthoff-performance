@@ -384,6 +384,66 @@ if (!displayTestimonials.length) {
 		</div>
 	</section>
 
+	<!-- CNWST Slideshow Section -->
+	<section class="py-20 bg-black">
+		<div class="container mx-auto px-4">
+			<div class="max-w-6xl mx-auto">
+				<div class="relative rounded-lg overflow-hidden">
+					<div class="flex transition-transform duration-500" id="cnwstSlider">
+						<!-- Slide 1 -->
+						<div class="w-full flex-shrink-0">
+							<img src="/images/CNWST/kalthoffCNWST.png" alt="Canada Soccer Training" class="w-full object-contain" />
+						</div>
+						<!-- Slide 2 -->
+						<div class="w-full flex-shrink-0">
+							<img src="/images/CNWST/kalthoffCNWST2.png" alt="Canada Soccer Training" class="w-full object-contain" />
+						</div>
+						<!-- Slide 3 -->
+						<div class="w-full flex-shrink-0">
+							<img src="/images/CNWST/e7dfdb49-d2f5-4d5f-816a-ede1ae76e50e.jpg" alt="Canada Soccer Training" class="w-full object-contain" />
+						</div>
+						<!-- Slide 4 -->
+						<div class="w-full flex-shrink-0">
+							<img src="/images/CNWST/de5a1420-b93f-4b5c-96e1-82301542dfd0.jpg" alt="Canada Soccer Training" class="w-full object-contain" />
+						</div>
+						<!-- Slide 5 -->
+						<div class="w-full flex-shrink-0">
+							<img src="/images/CNWST/C98E40B7-502E-419C-88AC-607F1FDB792D.jpg" alt="Canada Soccer Training" class="w-full object-contain" />
+						</div>
+						<!-- Slide 6 -->
+						<div class="w-full flex-shrink-0">
+							<img src="/images/CNWST/42639d79-52d4-4ec8-86db-6e6e4ac5a52d.jpg" alt="Canada Soccer Training" class="w-full object-contain" />
+						</div>
+						<!-- Slide 7 -->
+						<div class="w-full flex-shrink-0">
+							<img src="/images/CNWST/ce983ba1-ac33-49ae-8b88-8467d153ac9b.jpg" alt="Canada Soccer Training" class="w-full object-contain" />
+						</div>
+						<!-- Slide 8 -->
+						<div class="w-full flex-shrink-0">
+							<img src="/images/CNWST/54764e65-117b-4b1c-85d5-6c3189fd825c.jpg" alt="Canada Soccer Training" class="w-full object-contain" />
+						</div>
+						<!-- Slide 9 -->
+						<div class="w-full flex-shrink-0">
+							<img src="/images/CNWST/e0ac98a2-3b9c-4fa9-b0af-9f3c712c320d.jpg" alt="Canada Soccer Training" class="w-full object-contain" />
+						</div>
+					</div>
+					<!-- Navigation Dots -->
+					<div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+						<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(0)"></button>
+						<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(1)"></button>
+						<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(2)"></button>
+						<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(3)"></button>
+						<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(4)"></button>
+						<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(5)"></button>
+						<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(6)"></button>
+						<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(7)"></button>
+						<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" onclick="goToCNWSTSlide(8)"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- CTA Section -->
 	<section class="py-20 bg-black text-white">
 		<div class="container mx-auto px-4 text-center max-w-6xl">
@@ -607,5 +667,28 @@ if (!displayTestimonials.length) {
 		// Initialize slider
 		updateSlider();
 		startAutoSlide();
+
+		// CNWST Slider
+		let currentCNWSTSlide = 0;
+		const cnwstSlider = document.getElementById('cnwstSlider');
+
+		function updateCNWSTSlider() {
+			if (cnwstSlider) {
+				cnwstSlider.style.transform = `translateX(-${currentCNWSTSlide * 100}%)`;
+			}
+		}
+
+		function nextCNWSTSlide() {
+			currentCNWSTSlide = (currentCNWSTSlide + 1) % 9;
+			updateCNWSTSlider();
+		}
+
+		function goToCNWSTSlide(slideIndex: number) {
+			currentCNWSTSlide = slideIndex;
+			updateCNWSTSlider();
+		}
+
+		// Auto advance CNWST slides every 10 seconds
+		setInterval(nextCNWSTSlide, 10000);
 	});
 </script>

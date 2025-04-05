@@ -1,9 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getVideos } from '../lib/contentful';
-
-// Fetch videos from Contentful
-const videos = await getVideos();
 ---
 
 <Layout title="Videos - Kalthoff Performance">
@@ -16,27 +12,27 @@ const videos = await getVideos();
         <p class="mt-4 text-lg text-gray-500">
           Watch our latest training tips, techniques, and success stories
         </p>
+
+        <!-- Under Construction Section -->
+        <div class="mt-8">
+          <h3 class="text-2xl font-semibold text-gray-700">Under Construction</h3>
+          <p class="mt-2 text-gray-500">Our video content is coming soon. Stay tuned!</p>
+          <img src="https://via.placeholder.com/400x200?text=Under+Construction" alt="Under Construction" class="mx-auto mt-4" />
+        </div>
       </div>
 
-      <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {videos.map((video) => (
-          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div class="aspect-w-16 aspect-h-9">
-              <iframe
-                class="w-full h-full"
-                src={`https://www.youtube.com/embed/${video.videoId}`}
-                title={video.title}
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-900">{video.title}</h3>
-              <p class="mt-2 text-gray-600">{video.description}</p>
-            </div>
-          </div>
-        ))}
+      <!-- Embed YouTube Video -->
+      <div class="mt-12 flex justify-center">
+        <div class="aspect-w-16 aspect-h-9 w-full max-w-3xl">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/6-MI7CUZj2U"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
     </div>
   </div>
