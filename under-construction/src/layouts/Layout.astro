@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/images/logoMin.png" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	</head>
+	<body class="min-h-screen bg-white font-inter">
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style>
+	:root {
+		--primary-color: #000000;
+	}
+	
+	.bg-primary {
+		background-color: var(--primary-color);
+	}
+</style> 

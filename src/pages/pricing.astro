@@ -1,0 +1,273 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pricingPlans = [
+  {
+    name: 'Performance Programming',
+    price: 'Starting at $200/month',
+    description: 'Customized strength and conditioning programs for athletes looking to enhance their performance.',
+    features: [
+      'Personalized training programs',
+      'Regular program adjustments',
+      'Direct coach communication',
+      'Progress tracking',
+      'Video exercise library',
+      'Nutrition guidance'
+    ]
+  },
+  {
+    name: 'Rehabilitation Programming',
+    price: 'Starting at $250/month',
+    description: 'Specialized programs for injury recovery and return to sport.',
+    features: [
+      'Personalized rehab protocols',
+      'Movement assessment',
+      'Progress monitoring',
+      'Direct coach communication',
+      'Video exercise library',
+      'Return to sport planning'
+    ]
+  },
+  {
+    name: 'Daily Programming',
+    price: 'Starting at $150/month',
+    description: 'Personalized training programs for individuals focused on health and fitness.',
+    features: [
+      'Customized training programs',
+      'Regular program adjustments',
+      'Direct coach communication',
+      'Progress tracking',
+      'Video exercise library',
+      'Basic nutrition guidance'
+    ]
+  },
+  {
+    name: 'Team Training',
+    price: 'Custom Quote',
+    description: 'Comprehensive strength and conditioning programs for sports teams.',
+    features: [
+      'Team-wide programming',
+      'Individual athlete plans',
+      'GPS load monitoring',
+      'Performance testing',
+      'Coach education',
+      'Custom pricing based on team size'
+    ]
+  },
+  {
+    name: 'Sport Science',
+    price: 'Custom Quote',
+    description: 'Advanced performance testing and monitoring for data-driven training.',
+    features: [
+      'Performance testing',
+      'Data analysis',
+      'Load monitoring',
+      'Injury risk assessment',
+      'Training optimization',
+      'Custom pricing based on needs'
+    ]
+  },
+  {
+    name: 'Nutrition & Supplements',
+    price: 'Starting at $100/month',
+    description: 'Expert guidance on nutrition and supplementation to support your training and recovery.',
+    features: [
+      'Personalized nutrition plans',
+      'Supplementation guidance',
+      'Regular check-ins',
+      'Recipe suggestions',
+      'Grocery shopping lists',
+      'Meal timing strategies'
+    ]
+  },
+  {
+    name: 'Home Gym Design',
+    price: 'Starting at $500',
+    description: 'Professional consultation for creating an effective home training environment.',
+    features: [
+      'Space assessment',
+      'Equipment recommendations',
+      'Layout design',
+      'Safety considerations',
+      'Budget optimization',
+      'One-time consultation fee'
+    ]
+  },
+  {
+    name: 'Mentorship',
+    price: 'Starting at $150/hour',
+    description: 'Guidance for aspiring strength coaches and fitness professionals.',
+    features: [
+      'One-on-one sessions',
+      'Career development',
+      'Training methodology review',
+      'Data analysis guidance',
+      'Professional networking',
+      'Custom packages available'
+    ]
+  },
+  {
+    name: 'Collaboration',
+    price: 'Custom Quote',
+    description: 'Professional partnerships and consulting services.',
+    features: [
+      'Program development',
+      'Team coordination',
+      'Performance monitoring',
+      'Data integration',
+      'Professional development',
+      'Custom pricing based on scope'
+    ]
+  }
+];
+
+const pdfUrl = '/docs/Price Guide - Kalthoff Performance.pdf';
+---
+
+<Layout title="Pricing | Kalthoff Performance" description="Choose the plan that fits your fitness goals.">
+  <section class="py-16 min-h-screen bg-black">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-6xl font-bebas text-center mb-6 tracking-wider text-white">There are multiple ways we can work together<br />to reach your fitness goals</h1>
+      <div class="bg-black rounded-lg shadow-lg p-6 md:p-12 mb-10">
+        <p class="italic text-lg text-white text-center mb-2">
+          <span class="font-semibold">Depending on what your goals are, I have a plan that will <span class='font-bold'>fit your lifestyle</span>.</span> Some people are self-starters - they receive a plan and go for it with little guidance needed. Others need support along the way. Regardless of where you see yourself, <span class='font-bold'>we'll make it work!</span>
+        </p>
+      </div>
+      <!-- Responsive Pricing Tiers -->
+      <div class="grid gap-8 md:gap-0 md:grid-cols-3 mb-8">
+        <!-- Tier 1 -->
+        <div class="bg-white rounded-lg shadow-lg flex flex-col items-center p-6 md:border-r md:border-gray-300">
+          <div class="text-2xl font-bold font-bebas mb-2">Tier 1</div>
+          <div class="text-base font-semibold mb-4">Standard Programming</div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-green-600 text-2xl">✔️</span>
+            <span>App Access</span>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-red-600 text-2xl">❌</span>
+            <span>Intro Call</span>
+          </div>
+          <div class="flex flex-col gap-1 mb-2 w-full">
+            <div class="flex justify-between w-full"><span>1-3 Weekly Workouts</span><span class="font-bold">$50</span></div>
+            <div class="flex justify-between w-full"><span>4-6 Weekly Workouts</span><span class="font-bold">$70</span></div>
+          </div>
+        </div>
+        <!-- Tier 2 -->
+        <div class="bg-white rounded-lg shadow-lg flex flex-col items-center p-6 md:border-r md:border-gray-300">
+          <div class="text-2xl font-bold font-bebas mb-2">Tier 2</div>
+          <div class="text-base font-semibold mb-4">Custom Programming</div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-green-600 text-2xl">✔️</span>
+            <span>App Access</span>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-green-600 text-2xl">✔️</span>
+            <span>Intro Call</span>
+          </div>
+          <div class="flex flex-col gap-1 mb-2 w-full">
+            <div class="flex justify-between w-full"><span>1-3 Weekly Workouts</span><span class="font-bold">$120</span></div>
+            <div class="flex justify-between w-full"><span>4-6 Weekly Workouts</span><span class="font-bold">$150</span></div>
+          </div>
+        </div>
+        <!-- Tier 3 -->
+        <div class="bg-white rounded-lg shadow-lg flex flex-col items-center p-6">
+          <div class="text-2xl font-bold font-bebas mb-2">Tier 3</div>
+          <div class="text-base font-semibold mb-4">Highly Customized Programming</div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-green-600 text-2xl">✔️</span>
+            <span>App Access</span>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-green-600 text-2xl">✔️</span>
+            <span>Intro Call</span>
+          </div>
+          <div class="flex flex-col gap-1 mb-2 w-full">
+            <div class="flex justify-between w-full"><span>1-3 Weekly Workouts</span><span class="font-bold">$200</span></div>
+            <div class="flex justify-between w-full"><span>4-6 Weekly Workouts</span><span class="font-bold">$250</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Programming Details Section -->
+  <section class="py-16 bg-black">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl md:text-6xl font-bebas mb-10 tracking-wider text-white">Additional Programming Details</h2>
+      <div class="flex flex-col gap-12 max-w-5xl mx-auto">
+        <!-- Monthly Membership -->
+        <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div class="flex-shrink-0">
+            <div class="w-28 h-28 rounded-full border-4 border-lime-400 flex items-center justify-center text-center text-lg font-bold bg-white shadow" style="border-width: 4px;">
+              <span class="block text-xl md:text-2xl font-bebas">Monthly<br />Membership</span>
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl md:text-3xl font-bold mb-2 text-white">Add on to any program</h3>
+            <p class="mb-2 text-white">Weekly, Bi-Weekly or Monthly 30 minute, 1on1 video coaching calls to tackle fitness, nutrition or injury related program questions. Ranges from <span class="font-semibold">$75-$300 / month</span>. This is ideal for someone who wants:</p>
+            <ul class="list-disc list-inside grid grid-cols-1 md:grid-cols-3 gap-x-8 text-gray-200">
+              <li>Consistent program modification</li>
+              <li>Video review of exercise technique</li>
+              <li>Nutrition planning and guidance to target your goals</li>
+            </ul>
+          </div>
+        </div>
+        <hr class="border-t-4 border-cyan-300 my-2" />
+        <!-- Tier 1 -->
+        <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div class="flex-shrink-0">
+            <div class="w-28 h-28 rounded-full border-4 border-cyan-400 flex items-center justify-center text-center text-lg font-bold bg-white shadow">
+              <span class="block text-xl md:text-2xl font-bebas">Tier 1</span>
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl md:text-3xl font-bold mb-2 text-white">Standardized programming</h3>
+            <p class="text-white">These are non-individualized programs that emphasize full body strength, athleticism, resilience to injury and general health and wellness</p>
+          </div>
+        </div>
+        <hr class="border-t-4 border-yellow-400 my-2" />
+        <!-- Tier 2 -->
+        <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div class="flex-shrink-0">
+            <div class="w-28 h-28 rounded-full border-4 border-yellow-400 flex items-center justify-center text-center text-lg font-bold bg-white shadow">
+              <span class="block text-xl md:text-2xl font-bebas">Tier 2</span>
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl md:text-3xl font-bold mb-2 text-white">Choose your workout schedule</h3>
+            <p class="mb-2 text-white">These are individualized programs that are built specifically for you and include:</p>
+            <ul class="list-disc list-inside grid grid-cols-1 md:grid-cols-3 gap-x-8 text-gray-200">
+              <li>Individualized injury prevention and corrective movements for you</li>
+              <li>Targeted gym and endurance-based plans for the sports and activities you love</li>
+              <li>Tailored recovery so you can feel your best</li>
+            </ul>
+          </div>
+        </div>
+        <hr class="border-t-4 border-orange-400 my-2" />
+        <!-- Tier 3 -->
+        <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div class="flex-shrink-0">
+            <div class="w-28 h-28 rounded-full border-4 border-orange-400 flex items-center justify-center text-center text-lg font-bold bg-white shadow">
+              <span class="block text-xl md:text-2xl font-bebas">Tier 3</span>
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl md:text-3xl font-bold mb-2 text-white">Choose your workout schedule</h3>
+            <p class="mb-2 text-white">These are highly individualized programs that are built to accommodate your lifestyle, goals and schedule:</p>
+            <ul class="list-disc list-inside grid grid-cols-1 md:grid-cols-2 gap-x-8 text-gray-200">
+              <li>Individualized programming including all tier 2 services plus additional customization</li>
+              <li>Targeted gym / home based plans that fit into your schedule</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download PDF Bottom -->
+  <div class="flex justify-center py-12 bg-black">
+    <a href={pdfUrl} download class="inline-block bg-blue-900 text-white px-8 py-3 rounded-full text-lg font-bebas tracking-wider hover:bg-blue-700 transition duration-300 shadow-lg">
+      Download Full Price Guide (PDF)
+    </a>
+  </div>
+</Layout> 
